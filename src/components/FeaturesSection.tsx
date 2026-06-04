@@ -2,23 +2,23 @@
 
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
-import { Cloud, Cpu, ShieldCheck } from "lucide-react";
+import { Smartphone, Monitor, Rocket } from "lucide-react";
 
 const features = [
   {
-    title: "Cloud Infrastructure",
-    description: "Robust, scalable, and secure cloud environments tailored to your enterprise needs, ensuring 99.99% uptime.",
-    icon: <Cloud size={32} />
+    title: "Mobile App Development",
+    description: "We build high-performance, cross-platform mobile applications for iOS and Android that deliver exceptional user experiences.",
+    icon: <Smartphone size={32} />
   },
   {
-    title: "AI & Machine Learning",
-    description: "Leverage the power of artificial intelligence to automate workflows and unlock data-driven insights.",
-    icon: <Cpu size={32} />
+    title: "Web Development",
+    description: "From stunning corporate websites to complex enterprise platforms, we engineer scalable and secure web solutions.",
+    icon: <Monitor size={32} />
   },
   {
-    title: "Enterprise Security",
-    description: "Military-grade encryption and advanced threat detection systems to keep your sensitive data protected.",
-    icon: <ShieldCheck size={32} />
+    title: "SaaS Products",
+    description: "End-to-end development of Software-as-a-Service platforms designed for rapid growth, subscription management, and seamless scalability.",
+    icon: <Rocket size={32} />
   }
 ];
 
@@ -33,7 +33,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Built for the Future
+            Our Services
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export default function FeaturesSection() {
             transition={{ delay: 0.1 }}
             className={styles.sectionSubtitle}
           >
-            We combine elegant design with powerful engineering to deliver solutions that give you a competitive edge.
+            We combine elegant design with powerful engineering to deliver digital solutions that give you a competitive edge.
           </motion.p>
         </div>
         <div className={styles.featuresGrid}>
