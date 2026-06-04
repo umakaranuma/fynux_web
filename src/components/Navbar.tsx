@@ -23,6 +23,7 @@ export default function Navbar() {
           <span>Fynux<span className={styles.logoDot}>.</span></span>
         </Link>
         <ul className={styles.navLinks}>
+          <li><Link href="#about" className={styles.navLink}>About Us</Link></li>
           <li><Link href="#services" className={styles.navLink}>Services</Link></li>
           <li><Link href="#projects" className={styles.navLink}>Our Work</Link></li>
           <li><Link href="#contact" className={styles.navLink}>Contact</Link></li>

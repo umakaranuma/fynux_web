@@ -2,23 +2,41 @@
 
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
-import { Smartphone, Monitor, Rocket } from "lucide-react";
+import { Smartphone, Monitor, Rocket, CheckCircle2 } from "lucide-react";
 
 const features = [
   {
-    title: "Mobile App Development",
-    description: "We build high-performance, cross-platform mobile applications for iOS and Android that deliver exceptional user experiences.",
-    icon: <Smartphone size={32} />
+    title: "Production-Grade Mobile Development",
+    description: "High-performance applications for Android and iOS engineered for various business needs.",
+    icon: <Smartphone size={32} />,
+    details: [
+      "Custom Cross-Platform Apps with Flutter",
+      "Native Integration for OS-level features",
+      "E-Commerce Solutions with secure payments",
+      "Offline-First Apps using Hive and SQLite"
+    ]
   },
   {
-    title: "Web Development",
-    description: "From stunning corporate websites to complex enterprise platforms, we engineer scalable and secure web solutions.",
-    icon: <Monitor size={32} />
+    title: "Full-Stack Web & Backend Solutions",
+    description: "Comprehensive business systems built with React, NestJS, and Django REST Framework.",
+    icon: <Monitor size={32} />,
+    details: [
+      "Corporate & Portfolio Websites",
+      "Scalable Enterprise APIs",
+      "Tuition & Management Systems",
+      "Real-Time Comm. via WebSockets & Ably"
+    ]
   },
   {
-    title: "SaaS Products",
-    description: "End-to-end development of Software-as-a-Service platforms designed for rapid growth, subscription management, and seamless scalability.",
-    icon: <Rocket size={32} />
+    title: "Specialized Technical Consulting",
+    description: "Senior technical advisory to ensure your architecture is built to last and perform.",
+    icon: <Rocket size={32} />,
+    details: [
+      "Clean Architecture Audits",
+      "Performance Optimization",
+      "Firebase & Serverless Cloud Strategy",
+      "Real-time Databases for Rapid Scaling"
+    ]
   }
 ];
 
@@ -33,7 +51,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Our Services
+            Our Expertise
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +60,7 @@ export default function FeaturesSection() {
             transition={{ delay: 0.1 }}
             className={styles.sectionSubtitle}
           >
-            We combine elegant design with powerful engineering to deliver digital solutions that give you a competitive edge.
+            Delivering robust engineering and technical leadership across all digital platforms.
           </motion.p>
         </div>
         <div className={styles.featuresGrid}>
@@ -53,7 +71,7 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15, duration: 0.5 }}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -5 }}
               className={styles.featureCard}
             >
               <div className={styles.featureIcon}>
@@ -61,6 +79,15 @@ export default function FeaturesSection() {
               </div>
               <h3 className={styles.featureTitle}>{feature.title}</h3>
               <p className={styles.featureDesc}>{feature.description}</p>
+              
+              <ul className={styles.featureList}>
+                {feature.details.map((detail, dIdx) => (
+                  <li key={dIdx}>
+                    <CheckCircle2 size={16} className={styles.checkIcon} />
+                    {detail}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

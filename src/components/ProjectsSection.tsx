@@ -12,6 +12,22 @@ const projects = [
     webLink: "https://finzo-nu.vercel.app/",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.fynux.finzo&pcampaignid=web_share",
     tags: ["Flutter", "Hive", "Next.js", "Cross-Platform"]
+  },
+  {
+    title: "Finemart",
+    category: "E-Commerce",
+    description: "A complete mobile storefront solution featuring secure payment gateways, cart management, and real-time order tracking for retail businesses.",
+    webLink: "#",
+    playStoreLink: "#",
+    tags: ["Flutter", "Stripe", "Node.js", "E-Commerce"]
+  },
+  {
+    title: "MedLearning",
+    category: "Education Technology",
+    description: "An educational platform designed for video streaming lessons, student progress tracking, and automated subscription billing.",
+    webLink: "#",
+    playStoreLink: "#",
+    tags: ["React", "NestJS", "Video Streaming", "EdTech"]
   }
 ];
 
