@@ -24,12 +24,12 @@ export default function Navbar() {
         </Link>
         <ul className={styles.navLinks}>
           <li><Link href="#services" className={styles.navLink}>Services</Link></li>
-          <li><Link href="#about" className={styles.navLink}>About Us</Link></li>
+          <li><Link href="#projects" className={styles.navLink}>Our Work</Link></li>
           <li><Link href="#contact" className={styles.navLink}>Contact</Link></li>
         </ul>
-        <button className="btn btn-primary" style={{ padding: "0.5rem 1.25rem", fontSize: "0.9rem" }}>
+        <Link href="#contact" className="btn btn-primary" style={{ padding: "0.5rem 1.25rem", fontSize: "0.9rem" }}>
           Get Started
-        </button>
+        </Link>
       </div>
     </nav>
   );
