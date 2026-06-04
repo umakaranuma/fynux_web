@@ -5,8 +5,8 @@ import styles from "./components.module.css";
 import Image from "next/image";
 
 const pins = [
-  { id: 1, name: "North America", clients: "3+", top: "35%", left: "22%" },
-  { id: 2, name: "Europe", clients: "2+", top: "30%", left: "52%" }
+  { id: 1, name: "Tamil Nadu, India", clients: "2+", top: "48.3%", left: "71.3%" },
+  { id: 2, name: "Australia", clients: "1+", top: "72.5%", left: "83.1%" }
 ];
 
 export default function GlobalPresenceSection() {
@@ -40,7 +40,7 @@ export default function GlobalPresenceSection() {
           transition={{ duration: 0.8 }}
           className={styles.mapContainer}
         >
-          <img src="/world_map_simple.svg" alt="World Map" className={styles.mapImage} style={{ opacity: 0.15 }} />
+          <img src="/world_map_simple.svg" alt="World Map" className={styles.mapImage} style={{ opacity: 0.4, filter: 'invert(1)' }} />
           
           {pins.map((pin) => (
             <div 
