@@ -2,38 +2,58 @@
 
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
-import { Layers, Zap, Globe, ShieldCheck } from "lucide-react";
+import { Layers, Zap, Globe, ShieldCheck, Smartphone, Terminal, Server, Database, Cog } from "lucide-react";
 import Link from "next/link";
 
-const whyPartner = [
+const qualityStandards = [
   {
-    title: "Multi-Stack Mastery",
-    description: "We bring a rare depth of full-stack expertise to the table. Whether engineering smooth frontends in Flutter and React or architecting heavy-duty, secure backends in NestJS and Django REST Framework, we align every layer of your platform seamlessly.",
+    title: "95%+ Test Coverage Guarantees",
+    description: "Every application we deliver undergoes rigorous unit, widget, and structural integration testing to completely eliminate regression bugs before deployment.",
+    icon: <ShieldCheck size={28} />
+  },
+  {
+    title: "Clean Architecture Enforcement",
+    description: "We build using strictly decoupled, modular architectures. This ensures your codebase never becomes technical debt and remains easy for any engineering team to scale in the future.",
     icon: <Layers size={28} />
   },
   {
-    title: "Native-Level Performance",
-    description: "We refuse to compromise on speed or stability. By combining cross-platform framework efficiency with custom native engineering in Kotlin and Swift, we tap directly into platform-specific configurations and hardware.",
-    icon: <Zap size={28} />
-  },
-  {
-    title: "Globally Validated",
-    description: "Our technical expertise isn't just self-proclaimed—it is verified by the global engineering ecosystem. We are active open-source contributors, with multiple packages published on Pub.dev (Flutter) and PyPI (Python).",
+    title: "Open-Source Validated Core",
+    description: "Our internal utility solutions are backed by components trusted by the global software community, with verified packages published on the official Pub.dev and PyPI engineering registries.",
     icon: <Globe size={28} />
-  },
-  {
-    title: "Senior-Led Execution",
-    description: "Your project is guided from blueprint to deployment by a veteran technical lead. We actively eliminate communication barriers, unoptimized code, and state management bugs common with junior-level teams.",
-    icon: <ShieldCheck size={28} />
   }
 ];
 
 const ecosystem = [
-  { category: "Mobile Architecture", tech: "Flutter, Android SDK, iOS SDK, BLOC State Management, Platform Channels" },
-  { category: "Native Core Development", tech: "Kotlin, Swift" },
-  { category: "Web & Backend Frameworks", tech: "NestJS, Django REST Framework, React" },
-  { category: "Data & Cloud Infrastructure", tech: "Hive, SQLite, Drift, PostgreSQL, Firebase Ecosystem, Secure REST/GraphQL APIs" },
-  { category: "Quality Assurance & DevOps", tech: "Advanced Unit/Widget Testing, CI/CD Pipeline Automation (GitHub Actions, Codemagic, Fastlane)" }
+  { 
+    category: "Mobile Frameworks", 
+    description: "Cross-platform and native integrations tailored for high performance.",
+    tech: ["Flutter", "Dart", "iOS SDK", "Android SDK"],
+    icon: <Smartphone size={24} />
+  },
+  { 
+    category: "Native Operating Core", 
+    description: "Low-level system access and complex hardware integrations.",
+    tech: ["Kotlin", "Swift"],
+    icon: <Terminal size={24} />
+  },
+  { 
+    category: "Web & API Backends", 
+    description: "Scalable API architectures and interactive frontends.",
+    tech: ["NestJS", "Django REST Framework", "React"],
+    icon: <Server size={24} />
+  },
+  { 
+    category: "Data Systems", 
+    description: "Robust data persistence and real-time synchronization.",
+    tech: ["PostgreSQL", "MySQL", "Hive Databases", "SQLite", "Drift", "SharedPreferences"],
+    icon: <Database size={24} />
+  },
+  { 
+    category: "DevOps & Quality Assurance", 
+    description: "Automated pipelines and test-driven deployment systems.",
+    tech: ["GitHub Actions", "Automated CI-CD Pipelines", "Fastlane", "App Store & Play Store Delivery"],
+    icon: <Cog size={24} />
+  }
 ];
 
 export default function AboutSection() {
@@ -56,18 +76,18 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Why Partner With Us */}
-        <div className={styles.whyPartnerWrap}>
+        {/* Trust & Quality Standards */}
+        <div className={styles.whyPartnerWrap} id="tech-stack">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className={styles.sectionTitleCenter}
           >
-            Why Leading Brands and Startups Partner With Us
+            Trust & Quality Standards
           </motion.h3>
           <div className={styles.whyPartnerGrid}>
-            {whyPartner.map((item, idx) => (
+            {qualityStandards.map((item, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
@@ -104,18 +124,26 @@ export default function AboutSection() {
             We carefully select elite modern technologies to build robust, future-proof software.
           </motion.p>
           
-          <div className={styles.ecosystemList}>
+          <div className={styles.ecosystemGrid}>
             {ecosystem.map((eco, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                className={styles.ecoItem}
+                className={styles.ecoCard}
               >
-                <div className={styles.ecoCategory}>{eco.category}</div>
-                <div className={styles.ecoTech}>{eco.tech}</div>
+                <div className={styles.ecoHeader}>
+                  <div className={styles.ecoIcon}>{eco.icon}</div>
+                  <h4 className={styles.ecoCategoryTitle}>{eco.category}</h4>
+                </div>
+                <p className={styles.ecoDescription}>{eco.description}</p>
+                <div className={styles.ecoTechTags}>
+                  {eco.tech.map((t, i) => (
+                    <span key={i} className={styles.ecoTag}>{t}</span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>

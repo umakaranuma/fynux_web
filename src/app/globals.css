@@ -1,17 +1,17 @@
 :root {
-  /* Brand Colors - App Icon Theme */
-  --brand-primary: #f2842a; /* Vibrant Orange */
-  --brand-secondary: #ef563d; /* Light Vibrant Orange/Red */
-  --brand-accent: #9c4135; /* Dark Vibrant Red */
+  /* Brand Colors - Corporate Tech Theme */
+  --brand-primary: #3B82F6; /* Electric Blue */
+  --brand-secondary: #0EA5E9; /* Lighter Blue Accent */
+  --brand-accent: #64748B; /* Slate Gray */
 
-  /* Dark Theme Default */
-  --background-base: #050505;
-  --background-surface: #121212;
-  --background-elevated: #1a1a1a;
+  /* Dark Theme Default - Corporate Navy */
+  --background-base: #0F172A;
+  --background-surface: #1E293B;
+  --background-elevated: #334155;
   
-  --text-primary: #ffffff;
-  --text-secondary: #a3a3a3;
-  --text-muted: #525252;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
   
   --border-color: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(18, 18, 18, 0.7);
@@ -19,7 +19,7 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-  --gradient-glow: radial-gradient(circle at center, rgba(242, 132, 42, 0.15), transparent 70%);
+  --gradient-glow: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -139,12 +139,12 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: var(--gradient-primary);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(242, 132, 42, 0.3);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(242, 132, 42, 0.4);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {

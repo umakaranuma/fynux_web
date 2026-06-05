@@ -4,6 +4,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import CustomSelect from "./CustomSelect";
+
+const subjectOptions = [
+  { value: "Project Inquiry", label: "Project Inquiry" },
+  { value: "Technical Consulting", label: "Technical Consulting" },
+  { value: "Partnership Opportunity", label: "Partnership Opportunity" },
+  { value: "General Question", label: "General Question" }
+];
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,7 +53,7 @@ export default function ContactSection() {
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Start a Project
+            Get in Touch
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +62,7 @@ export default function ContactSection() {
             transition={{ delay: 0.1 }}
             className={styles.sectionSubtitle}
           >
-            Ready to build something incredible? Provide your project details below.
+            Whether you have a project in mind or just want to say hello, we'd love to hear from you.
           </motion.p>
         </div>
 
@@ -103,58 +111,34 @@ export default function ContactSection() {
             ) : (
               <form className={styles.contactForm} onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="name">Full Name / Company Name</label>
-                  <input type="text" id="name" name="name" placeholder="John Doe / Acme Corp" required />
+                  <label htmlFor="name">Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="John Doe" required />
                 </div>
                 
                 <div className={styles.formGroup}>
-                  <label htmlFor="email">Work Email Address</label>
-                  <input type="email" id="email" name="email" placeholder="john@acme.com" required />
+                  <label htmlFor="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="john@company.com" required />
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="projectType">Project Type</label>
-                  <select id="projectType" name="projectType" required defaultValue="">
-                    <option value="" disabled>Select a project type...</option>
-                    <option value="Cross-Platform Mobile App (iOS & Android)">Cross-Platform Mobile App (iOS & Android)</option>
-                    <option value="Full-Stack Web Application">Full-Stack Web Application</option>
-                    <option value="Enterprise E-Commerce Store">Enterprise E-Commerce Store</option>
-                    <option value="Custom Backend/API Integration">Custom Backend/API Integration</option>
-                    <option value="Technical Consulting/Audit">Technical Consulting/Audit</option>
-                  </select>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="budget">Estimated Project Budget</label>
-                  <select id="budget" name="budget" required defaultValue="">
-                    <option value="" disabled>Select your budget range...</option>
-                    <option value="$2,500 – $5,000">$2,500 – $5,000</option>
-                    <option value="$5,000 – $10,000">$5,000 – $10,000</option>
-                    <option value="$10,000 – $25,000">$10,000 – $25,000</option>
-                    <option value="$25,000+">$25,000+</option>
-                  </select>
+                  <label>Subject</label>
+                  <CustomSelect 
+                    name="subject" 
+                    options={subjectOptions} 
+                    placeholder="How can we help you?" 
+                    required 
+                  />
                 </div>
                 
                 <div className={styles.formGroup}>
-                  <label htmlFor="description">Project Description & Goals</label>
+                  <label htmlFor="message">Message</label>
                   <textarea 
-                    id="description" 
-                    name="description" 
-                    rows={4} 
-                    placeholder="Please share a brief overview of your app, target audience, and any specific technical requirements (e.g., Stripe payment gateway, real-time chat, offline support)." 
+                    id="message" 
+                    name="message" 
+                    rows={5} 
+                    placeholder="Tell us about your project, question, or idea..." 
                     required
                   ></textarea>
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="timeline">Desired Launch Timeline</label>
-                  <select id="timeline" name="timeline" required defaultValue="">
-                    <option value="" disabled>Select your timeline...</option>
-                    <option value="Broad Idea / Research Stage">Broad Idea / Research Stage</option>
-                    <option value="Within 1–2 Months">Within 1–2 Months</option>
-                    <option value="Within 3–6 Months">Within 3–6 Months</option>
-                    <option value="Urgent Launch Needed">Urgent Launch Needed</option>
-                  </select>
                 </div>
                 
                 <button type="submit" className={`btn btn-primary ${styles.submitBtn}`} disabled={isSubmitting}>

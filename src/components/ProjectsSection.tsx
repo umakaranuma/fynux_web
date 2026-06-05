@@ -2,38 +2,35 @@
 
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
-import { ExternalLink, ArrowRight, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Finzo",
-    category: "Finance & Fintech",
-    description: "A comprehensive cross-platform money manager application. We built the high-performance mobile app using Flutter and Hive, complemented by a seamless web platform.",
-    webLink: "https://finzo-nu.vercel.app/",
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.fynux.finzo&pcampaignid=web_share",
-    tags: ["Flutter", "Hive", "Next.js", "Cross-Platform"]
+    title: "Subscription-Based E-Learning Ecosystem",
+    category: "EdTech Solution",
+    challenge: "Building a mobile learning platform requiring high-fidelity video distribution, secure payment handling, and offline usability.",
+    delivery: "Implemented an automated subscription billing pipeline, custom native audio/video focus configurations for mobile operating systems, and advanced local database caching strategies to ensure a seamless offline-first experience.",
+    tags: ["Flutter", "Hive", "Payments", "Video Streaming"]
   },
   {
-    title: "Finemart",
-    category: "E-Commerce",
-    description: "A complete mobile storefront solution featuring secure payment gateways, cart management, and real-time order tracking for retail businesses.",
-    webLink: "#",
-    playStoreLink: "#",
-    tags: ["Flutter", "Stripe", "Node.js", "E-Commerce"]
+    title: "Real-Time Communication & Messaging Platform",
+    category: "Enterprise Communication",
+    challenge: "Developing a low-latency, real-time messaging environment capable of operating reliably under unstable network conditions.",
+    delivery: "Designed a high-throughput synchronization engine using advanced state management architectures, paired with encrypted local storage layers and background push-notification delivery frameworks.",
+    tags: ["WebSockets", "State Management", "Encryption", "Push Notifications"]
   },
   {
-    title: "MedLearning",
-    category: "Education Technology",
-    description: "An educational platform designed for video streaming lessons, student progress tracking, and automated subscription billing.",
-    webLink: "#",
-    playStoreLink: "#",
-    tags: ["React", "NestJS", "Video Streaming", "EdTech"]
+    title: "High-Performance Retail Storefronts",
+    category: "Digital Commerce",
+    challenge: "Launching an asynchronous mobile commerce application with absolute state tracking across cart management and checkout funnels.",
+    delivery: "Built a modular frontend integrated with complex enterprise REST APIs, introducing automated token-refresh mechanics, bulletproof error handling, and flawless cross-platform performance.",
+    tags: ["REST APIs", "E-Commerce", "Cross-Platform", "Token Mechanics"]
   }
 ];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className={styles.projectsSection}>
+    <section id="solutions" className={styles.projectsSection}>
       <div className="container">
         <div className={styles.sectionHeader}>
           <motion.h2 
@@ -42,7 +39,7 @@ export default function ProjectsSection() {
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Our Work
+            Proven Solutions
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -51,7 +48,7 @@ export default function ProjectsSection() {
             transition={{ delay: 0.1 }}
             className={styles.sectionSubtitle}
           >
-            Showcasing the digital experiences and platforms we've brought to life.
+            Showcasing the digital experiences and enterprise architectures we've brought to life.
           </motion.p>
         </div>
         
@@ -68,39 +65,23 @@ export default function ProjectsSection() {
               <div className={styles.projectContent}>
                 <div className={styles.projectHeader}>
                   <span className={styles.projectCategory}>{project.category}</span>
-                  <div style={{ display: 'flex', gap: '0.75rem' }}>
-                    {project.webLink && (
-                      <a href={project.webLink} target="_blank" rel="noopener noreferrer" className={styles.projectLink} title="Web Platform">
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
-                    {project.playStoreLink && (
-                      <a href={project.playStoreLink} target="_blank" rel="noopener noreferrer" className={styles.projectLink} title="Play Store">
-                        <Smartphone size={20} />
-                      </a>
-                    )}
-                  </div>
                 </div>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDesc}>{project.description}</p>
+                
+                <div>
+                  <strong style={{color: "var(--brand-primary)"}}>The Challenge:</strong>
+                  <p className={styles.projectDesc} style={{marginBottom: "1rem", marginTop: "0.25rem"}}>{project.challenge}</p>
+                </div>
+                
+                <div>
+                  <strong style={{color: "var(--text-primary)"}}>Our Delivery:</strong>
+                  <p className={styles.projectDesc} style={{marginBottom: "2rem", marginTop: "0.25rem"}}>{project.delivery}</p>
+                </div>
                 
                 <div className={styles.projectTags}>
                   {project.tags.map((tag, tIdx) => (
                     <span key={tIdx} className={styles.tag}>{tag}</span>
                   ))}
-                </div>
-                
-                <div style={{ display: 'flex', gap: '1.5rem', marginTop: 'auto', flexWrap: 'wrap' }}>
-                  {project.playStoreLink && (
-                    <a href={project.playStoreLink} target="_blank" rel="noopener noreferrer" className={styles.projectAction}>
-                      Play Store <ArrowRight size={16} />
-                    </a>
-                  )}
-                  {project.webLink && (
-                    <a href={project.webLink} target="_blank" rel="noopener noreferrer" className={styles.projectAction}>
-                      Web Platform <ArrowRight size={16} />
-                    </a>
-                  )}
                 </div>
               </div>
             </motion.div>

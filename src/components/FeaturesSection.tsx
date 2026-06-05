@@ -2,40 +2,47 @@
 
 import { motion } from "framer-motion";
 import styles from "./components.module.css";
-import { Smartphone, Monitor, Rocket, CheckCircle2 } from "lucide-react";
+import { Smartphone, Server, ShoppingCart, Workflow, CheckCircle2 } from "lucide-react";
 
 const features = [
   {
-    title: "Production-Grade Mobile Development",
-    description: "High-performance applications for Android and iOS engineered for various business needs.",
+    title: "Enterprise Mobile Engineering",
+    description: "We engineer production-ready cross-platform mobile apps using the Flutter framework. To guarantee native-level performance, our team writes custom platform channels in Kotlin and Swift, ensuring seamless background processing, hardware integration, and zero compromise on execution speed.",
     icon: <Smartphone size={32} />,
     details: [
-      "Custom Cross-Platform Apps with Flutter",
-      "Native Integration for OS-level features",
-      "E-Commerce Solutions with secure payments",
-      "Offline-First Apps using Hive and SQLite"
+      "Cross-platform frameworks (Flutter)",
+      "Native Kotlin and Swift optimizations",
+      "High-performance iOS and Android"
     ]
   },
   {
-    title: "Full-Stack Web & Backend Solutions",
-    description: "Comprehensive business systems built with React, NestJS, and Django REST Framework.",
-    icon: <Monitor size={32} />,
+    title: "Robust Backend & Cloud Architecture",
+    description: "We build the heavy-duty infrastructure that powers front-end experiences. Utilizing NestJS and Django REST Framework, we design highly secure, scalable APIs and advanced relational database architectures optimized for low-latency queries and high-throughput reliability.",
+    icon: <Server size={32} />,
     details: [
-      "Corporate & Portfolio Websites",
-      "Scalable Enterprise APIs",
-      "Tuition & Management Systems",
-      "Real-Time Comm. via WebSockets & Ably"
+      "Scalable API layers",
+      "Relational data systems",
+      "Heavy data traffic & security"
     ]
   },
   {
-    title: "Specialized Technical Consulting",
-    description: "Senior technical advisory to ensure your architecture is built to last and perform.",
-    icon: <Rocket size={32} />,
+    title: "Digital Commerce Solutions",
+    description: "We develop comprehensive e-commerce systems featuring robust client-side performance, secure international payment gateways (such as Stripe integration), advanced local data caching, and synchronized inventory tracking.",
+    icon: <ShoppingCart size={32} />,
     details: [
-      "Clean Architecture Audits",
-      "Performance Optimization",
-      "Firebase & Serverless Cloud Strategy",
-      "Real-time Databases for Rapid Scaling"
+      "Secure, end-to-end storefronts",
+      "Real-time tracking capabilities",
+      "Payment gateway integration"
+    ]
+  },
+  {
+    title: "Custom Automated Workflows",
+    description: "We build tailored business tooling, including advanced institute/shop management configurations, real-time synchronization engines, and background messaging pipelines engineered using WebSockets for instantaneous data delivery.",
+    icon: <Workflow size={32} />,
+    details: [
+      "Internal management tools",
+      "Real-time sync engines",
+      "Complex operational logic"
     ]
   }
 ];
@@ -51,7 +58,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             className={styles.sectionTitle}
           >
-            Our Expertise
+            Our Core Services
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

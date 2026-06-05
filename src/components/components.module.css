@@ -69,10 +69,9 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
 .heroBg {
@@ -84,35 +83,125 @@
   height: 100vh;
   background: var(--gradient-glow);
   z-index: -1;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-.heroContent {
-  text-align: center;
-  max-width: 800px;
+.heroSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
   z-index: 1;
 }
 
-.heroTitle {
-  font-size: clamp(3rem, 8vw, 5rem);
-  letter-spacing: -0.04em;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
+@media (max-width: 992px) {
+  .heroSplit {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 
-.heroDescription {
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
+.heroContentLeft {
+  max-width: 650px;
+}
+
+@media (max-width: 992px) {
+  .heroContentLeft {
+    margin: 0 auto;
+  }
+}
+
+.heroTitleLeft {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.heroDescriptionLeft {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin-inline: auto;
   line-height: 1.6;
 }
 
-.heroActions {
+.heroActionsLeft {
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 992px) {
+  .heroActionsLeft {
+    justify-content: center;
+  }
+}
+
+/* Abstract Graphic */
+.heroVisualRight {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.abstractGraphic {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  position: relative;
+}
+
+.graphicBlock {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem 2.5rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  justify-content: center;
+  z-index: 2;
+}
+
+.mobileBlock {
+  transform: translateX(-30px);
+}
+
+.apiBlock {
+  transform: translateX(30px);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.dbBlock {
+  transform: translateX(-15px);
+}
+
+.graphicLines {
+  display: flex;
+  gap: 2rem;
+  height: 40px;
+  position: relative;
+}
+
+.animatedLine {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--brand-primary), transparent);
+  opacity: 0.5;
+  animation: dataFlow 2s infinite linear;
+}
+
+@keyframes dataFlow {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
 }
 
 /* Features Section */
@@ -266,7 +355,7 @@
 
 .statIcon {
   color: var(--brand-primary);
-  background: rgba(242, 132, 42, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   padding: 1rem;
   border-radius: 50%;
   margin-bottom: 0.5rem;
@@ -389,7 +478,7 @@
 .projectCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(242, 132, 42, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .projectContent {
@@ -530,8 +619,7 @@
 }
 
 .formGroup input,
-.formGroup textarea,
-.formGroup select {
+.formGroup textarea {
   background: var(--background-base);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -542,19 +630,110 @@
   transition: border-color var(--transition-fast);
 }
 
-.formGroup select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1em;
-}
-
 .formGroup input:focus,
-.formGroup textarea:focus,
-.formGroup select:focus {
+.formGroup textarea:focus {
   outline: none;
   border-color: var(--brand-primary);
+}
+
+/* Custom Select Component */
+.customSelectContainer {
+  position: relative;
+  width: 100%;
+}
+
+.customSelectTrigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--background-base);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.customSelectTrigger:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.customSelectOpen {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.customSelectPlaceholder {
+  color: var(--text-muted);
+}
+
+.customSelectIcon {
+  color: var(--text-secondary);
+  transition: transform var(--transition-fast);
+}
+
+.customSelectOpen .customSelectIcon {
+  transform: rotate(180deg);
+}
+
+.customSelectDropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+  background: var(--background-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.customSelectList {
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.customSelectList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.customSelectList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.customSelectList::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.customSelectItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.95rem;
+}
+
+.customSelectItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+}
+
+.customSelectItemSelected {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: var(--brand-primary) !important;
+  font-weight: 500;
 }
 
 .submitBtn {
@@ -570,7 +749,7 @@
   justify-content: center;
   text-align: center;
   padding: 4rem 2rem;
-  background: rgba(242, 132, 42, 0.05);
+  background: rgba(59, 130, 246, 0.05);
   border: 1px dashed var(--brand-primary);
   border-radius: var(--radius-lg);
   height: 100%;
@@ -738,7 +917,7 @@
 .whyIcon {
   color: var(--brand-primary);
   margin-bottom: 1.5rem;
-  background: rgba(242, 132, 42, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   width: 60px;
   height: 60px;
   display: flex;
@@ -763,34 +942,101 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.ecosystemList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+.ecosystemWrap::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
 }
 
-.ecoItem {
-  display: flex;
-  align-items: center;
+.ecosystemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ecoCard {
   background: var(--background-surface);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.ecoCategory {
-  flex: 0 0 250px;
+.ecoCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom right, var(--background-surface), rgba(59, 130, 246, 0.02));
+}
+
+.ecoHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ecoIcon {
+  color: var(--brand-primary);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecoCategoryTitle {
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.ecoTech {
-  flex: 1;
+.ecoDescription {
   color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.ecoTechTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ecoTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.ecoCard:hover .ecoTag {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.2);
+  color: var(--text-primary);
 }
 
 .aboutCta {
