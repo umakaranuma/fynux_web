@@ -62,26 +62,29 @@ export default function ProjectsSection() {
               transition={{ delay: idx * 0.2, duration: 0.5 }}
               className={styles.projectCard}
             >
+              {/* Image Placeholder Block */}
+              <div className={styles.projectImageBlock}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--brand-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.5 }}>
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+
               <div className={styles.projectContent}>
-                <div className={styles.projectHeader}>
-                  <span className={styles.projectCategory}>{project.category}</span>
-                </div>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
+                <span className={styles.projectPill}>{project.category}</span>
                 
-                <div>
-                  <strong style={{color: "var(--brand-primary)"}}>The Challenge:</strong>
-                  <p className={styles.projectDesc} style={{marginBottom: "1rem", marginTop: "0.25rem"}}>{project.challenge}</p>
-                </div>
+                <p className={styles.projectDesc}>{project.challenge} {project.delivery}</p>
                 
-                <div>
-                  <strong style={{color: "var(--text-primary)"}}>Our Delivery:</strong>
-                  <p className={styles.projectDesc} style={{marginBottom: "2rem", marginTop: "0.25rem"}}>{project.delivery}</p>
-                </div>
-                
-                <div className={styles.projectTags}>
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className={styles.tag}>{tag}</span>
-                  ))}
+                <div className={styles.projectActionRow}>
+                  <div className={styles.projectBtn}>View Details</div>
+                  <div className={styles.projectIconBtn}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"/>
+                      <polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
             </motion.div>

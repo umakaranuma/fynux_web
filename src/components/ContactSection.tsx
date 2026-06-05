@@ -72,23 +72,31 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={styles.contactInfo}
+            className={styles.contactInfoCard}
           >
             <h3>Contact Information</h3>
-            <p className={styles.contactDesc}>Fill out the form and our principal architect will get back to you within 24 hours to schedule a discovery call.</p>
             
             <div className={styles.infoItems}>
               <div className={styles.infoItem}>
-                <Phone size={24} className={styles.infoIcon} />
-                <span>+1 (555) 123-4567</span>
+                <Mail size={24} className={styles.infoIcon} />
+                <div className={styles.infoText}>
+                  <span className={styles.infoLabel}>Email</span>
+                  <span className={styles.infoValue}>fynux.bussiness@gmail.com</span>
+                </div>
               </div>
               <div className={styles.infoItem}>
-                <Mail size={24} className={styles.infoIcon} />
-                <span>fynux.bussiness@gmail.com</span>
+                <Phone size={24} className={styles.infoIcon} />
+                <div className={styles.infoText}>
+                  <span className={styles.infoLabel}>Phone</span>
+                  <span className={styles.infoValue}>+1 (555) 123-4567</span>
+                </div>
               </div>
               <div className={styles.infoItem}>
                 <MapPin size={24} className={styles.infoIcon} />
-                <span>Global Headquaters, USA</span>
+                <div className={styles.infoText}>
+                  <span className={styles.infoLabel}>Address</span>
+                  <span className={styles.infoValue}>Global Headquarters, USA</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -110,39 +118,58 @@ export default function ContactSection() {
               </div>
             ) : (
               <form className={styles.contactForm} onSubmit={handleSubmit}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Full Name</label>
-                  <input type="text" id="name" name="name" placeholder="John Doe" required />
+                <div className={styles.formHeader}>
+                  <h3>Let's Connect</h3>
+                  <p>Have a question or project in mind? Fill out the form below, and we'll get back to you soon!</p>
+                </div>
+
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="name">First Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your first name" required />
+                  </div>
+                  
+                  <div className={styles.formGroup}>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" />
+                  </div>
                 </div>
                 
-                <div className={styles.formGroup}>
-                  <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" name="email" placeholder="john@company.com" required />
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="phone">Contact Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" />
+                  </div>
+                  
+                  <div className={styles.formGroup}>
+                    <label htmlFor="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+                  </div>
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Subject</label>
+                  <label>Subject *</label>
                   <CustomSelect 
                     name="subject" 
                     options={subjectOptions} 
-                    placeholder="How can we help you?" 
+                    placeholder="Enter the subject" 
                     required 
                   />
                 </div>
                 
                 <div className={styles.formGroup}>
-                  <label htmlFor="message">Message</label>
+                  <label htmlFor="message">Message *</label>
                   <textarea 
                     id="message" 
                     name="message" 
-                    rows={5} 
-                    placeholder="Tell us about your project, question, or idea..." 
+                    rows={4} 
+                    placeholder="Type your message here" 
                     required
                   ></textarea>
                 </div>
                 
                 <button type="submit" className={`btn btn-primary ${styles.submitBtn}`} disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Submit Inquiry"} {!isSubmitting && <Send size={18} />}
+                  {isSubmitting ? "Sending..." : "Send Message"} {!isSubmitting && <Send size={18} />}
                 </button>
               </form>
             )}

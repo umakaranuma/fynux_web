@@ -52,16 +52,18 @@
 .navLink::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background: var(--gradient-primary);
-  transition: width var(--transition-fast);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: var(--brand-primary);
+  transition: transform var(--transition-fast);
 }
 
 .navLink:hover::after {
-  width: 100%;
+  transform: translateX(-50%) scale(1);
 }
 
 /* Hero Section */
@@ -71,7 +73,8 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 6rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
 }
 
 .heroBg {
@@ -203,6 +206,61 @@
   50% { opacity: 1; }
   100% { transform: translateY(100%); opacity: 0; }
 }
+
+.heroMarqueeContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(to right, var(--background-base), transparent 5%, transparent 95%, var(--background-base));
+  z-index: 5;
+}
+
+.heroMarquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  gap: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.heroMarquee:hover {
+  animation-play-state: paused;
+}
+
+.heroMarqueePill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(85, 193, 217, 0.2);
+  background: rgba(85, 193, 217, 0.05);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-fast);
+}
+
+.heroMarqueePill:hover {
+  background: rgba(85, 193, 217, 0.15);
+  border-color: rgba(85, 193, 217, 0.4);
+}
+
+.heroMarqueePill svg {
+  color: var(--brand-primary);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 
 /* Features Section */
 .featuresSection {
@@ -467,7 +525,7 @@
 .projectCard {
   background: var(--background-surface);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   transition: all var(--transition-normal);
   position: relative;
@@ -478,43 +536,42 @@
 .projectCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(85, 193, 217, 0.3);
+}
+
+.projectImageBlock {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, var(--background-elevated), rgba(85, 193, 217, 0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .projectContent {
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.projectHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.projectCategory {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--brand-primary);
-  font-weight: 600;
-}
-
-.projectLink {
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
-}
-
-.projectLink:hover {
-  color: var(--brand-primary);
-}
-
 .projectTitle {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
+}
+
+.projectPill {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(85, 193, 217, 0.15);
+  color: var(--brand-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
 }
 
 .projectDesc {
@@ -524,34 +581,48 @@
   flex-grow: 1;
 }
 
-.projectTags {
+.projectActionRow {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  color: var(--text-secondary);
-}
-
-.projectAction {
-  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  transition: color var(--transition-fast);
+  gap: 1rem;
   margin-top: auto;
 }
 
-.projectAction:hover {
+.projectBtn {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.projectBtn:hover {
+  background: var(--brand-primary);
+  color: var(--background-base);
+  border-color: var(--brand-primary);
+}
+
+.projectIconBtn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(85, 193, 217, 0.1);
   color: var(--brand-primary);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.projectIconBtn:hover {
+  background: var(--brand-primary);
+  color: var(--background-base);
 }
 
 /* Contact Section */
@@ -562,18 +633,28 @@
 
 .contactContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 4rem;
-  background: var(--background-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.contactInfo h3 {
-  font-size: 1.75rem;
+@media (max-width: 992px) {
+  .contactContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactInfoCard {
+  background: var(--background-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contactInfoCard h3 {
+  font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--brand-primary);
 }
 
 .contactDesc {
@@ -585,25 +666,72 @@
 .infoItems {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .infoItem {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--text-primary);
-  font-size: 1.05rem;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
 .infoIcon {
   color: var(--brand-primary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoLabel {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.infoValue {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1.05rem;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  background: var(--background-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+}
+
+.formHeader {
+  margin-bottom: 1rem;
+}
+
+.formHeader h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.formHeader p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
 }
 
 .formGroup {
@@ -615,12 +743,12 @@
 .formGroup label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .formGroup input,
 .formGroup textarea {
-  background: var(--background-base);
+  background: transparent;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 0.8rem 1rem;
@@ -780,16 +908,42 @@
 
 .featureList li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
   font-size: 0.95rem;
   color: var(--text-secondary);
 }
 
-.checkIcon {
-  color: var(--brand-accent);
+.featureDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--brand-primary);
   flex-shrink: 0;
-  margin-top: 0.1rem;
+}
+
+.cardArrowBtn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(85, 193, 217, 0.1);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--transition-normal);
+}
+
+.featureCard:hover .cardArrowBtn {
+  opacity: 1;
+  transform: translateX(0);
+  background: var(--brand-primary);
+  color: var(--background-base);
 }
 
 /* Industries Section */
@@ -855,25 +1009,86 @@
   background: var(--background-base);
 }
 
-.aboutIntro {
-  max-width: 800px;
-  margin: 0 auto 5rem;
-  text-align: center;
+.aboutSplit {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 992px) {
+  .aboutSplit {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.aboutLogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutLogoGraphic {
+  font-size: 12rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--brand-primary);
+  position: relative;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.aboutLogoGraphic::after {
+  content: 'F';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: var(--brand-primary);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.aboutLogoText {
+  font-size: 3rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 0.25rem;
+}
+
+.aboutLogoSub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .aboutTitle {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--brand-primary);
+}
+
+.aboutSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
 .aboutText p {
   color: var(--text-secondary);
   font-size: 1.1rem;
   line-height: 1.7;
-  margin-bottom: 1.5rem;
 }
 
 .sectionTitleCenter {
@@ -1064,4 +1279,130 @@
     gap: 1rem;
     text-align: center;
   }
+}
+
+/* Team Section */
+.teamSection {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+  background: var(--background-base);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.teamCard {
+  background: var(--background-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.teamCard:hover {
+  border-color: rgba(85, 193, 217, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(85, 193, 217, 0.15);
+}
+
+/* Hover dot indicator */
+.teamCard::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 10px var(--brand-primary);
+}
+
+.teamCard:hover::after {
+  opacity: 1;
+}
+
+/* Subtle ring around the dot */
+.teamCard::before {
+  content: '';
+  position: absolute;
+  top: calc(1.5rem - 6px);
+  right: calc(1.5rem - 6px);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(85, 193, 217, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.teamCard:hover::before {
+  opacity: 1;
+}
+
+.teamIconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(85, 193, 217, 0.8), rgba(74, 122, 255, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glowing background effect on hover */
+.teamCard:hover .teamIconWrapper {
+  box-shadow: 0 0 30px rgba(85, 193, 217, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* Large blurred background glow */
+.teamIconGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(85, 193, 217, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.teamCard:hover .teamIconGlow {
+  opacity: 1;
+}
+
+.teamTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.teamCard:hover .teamTitle {
+  color: var(--brand-primary);
 }

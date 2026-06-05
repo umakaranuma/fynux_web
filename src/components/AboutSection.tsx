@@ -62,17 +62,40 @@ export default function AboutSection() {
       <div className="container">
         
         {/* Intro */}
-        <div className={styles.aboutIntro}>
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+        <div className={styles.aboutSplit}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={styles.aboutText}
+            transition={{ duration: 0.8, type: "spring" }}
+            className={styles.aboutLogoContainer}
           >
-            <h2 className={styles.aboutTitle}>Engineering Digital Products with Architectural Excellence</h2>
-            <p>At Fynux, we don't just write code—we engineer scalable, production-grade software ecosystems designed to fuel business growth. Founded by a Senior Software Engineer with a rich background in mobile system design and relational database architecture, our agency bridges the gap between complex enterprise logic and exceptional user experiences.</p>
-            <p>We specialize in crafting high-performance cross-platform mobile applications and robust full-stack architectures. Our foundational development philosophy is rooted in Clean Architecture, SOLID principles, and modular design. This ensures that every line of code we deliver is maintainable, secure, and built to scale alongside your business.</p>
+            <motion.div 
+              className={styles.aboutLogoGraphic}
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            >
+              F
+            </motion.div>
+            <div className={styles.aboutLogoText}>Fynux</div>
+            <div className={styles.aboutLogoSub}>Engineering Excellence</div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className={styles.aboutContent}
+          >
+            <div>
+              <h2 className={styles.aboutTitle}>About Fynux</h2>
+              <p className={styles.aboutSubtitle}>Where Logic Meets Imagination</p>
+            </div>
+            <div className={styles.aboutText}>
+              <p>At Fynux, we don't just write code—we engineer scalable, production-grade software ecosystems designed to fuel business growth. Founded by a Senior Software Engineer with a rich background in mobile system design and relational database architecture, our agency bridges the gap between complex enterprise logic and exceptional user experiences.</p>
+              <p>We specialize in crafting high-performance cross-platform mobile applications and robust full-stack architectures. Our foundational development philosophy is rooted in Clean Architecture, SOLID principles, and modular design. This ensures that every line of code we deliver is maintainable, secure, and built to scale alongside your business.</p>
+            </div>
           </motion.div>
         </div>
 

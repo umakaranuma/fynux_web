@@ -6,6 +6,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import IndustriesSection from "@/components/IndustriesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import GlobalPresenceSection from "@/components/GlobalPresenceSection";
+import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <IndustriesSection />
         <ProjectsSection />
         <GlobalPresenceSection />
+        <TeamSection />
         <ContactSection />
       </main>
       <Footer />

@@ -80,21 +80,28 @@ export default function FeaturesSection() {
               transition={{ delay: idx * 0.15, duration: 0.5 }}
               whileHover={{ y: -5 }}
               className={styles.featureCard}
+              style={{ paddingBottom: '4.5rem' }} // Space for the arrow button
             >
               <div className={styles.featureIcon}>
                 {feature.icon}
               </div>
               <h3 className={styles.featureTitle}>{feature.title}</h3>
-              <p className={styles.featureDesc}>{feature.description}</p>
+              <p className={styles.featureDesc} style={{ marginBottom: '1.5rem' }}>{feature.description}</p>
               
               <ul className={styles.featureList}>
                 {feature.details.map((detail, dIdx) => (
                   <li key={dIdx}>
-                    <CheckCircle2 size={16} className={styles.checkIcon} />
+                    <div className={styles.featureDot} />
                     {detail}
                   </li>
                 ))}
               </ul>
+              
+              <div className={styles.cardArrowBtn}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
             </motion.div>
           ))}
         </div>

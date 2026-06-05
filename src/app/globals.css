@@ -1,25 +1,25 @@
 :root {
-  /* Brand Colors - Corporate Tech Theme */
-  --brand-primary: #3B82F6; /* Electric Blue */
-  --brand-secondary: #0EA5E9; /* Lighter Blue Accent */
+  /* Brand Colors - AuraSyntax Theme */
+  --brand-primary: #55C1D9; /* Cyan */
+  --brand-secondary: #38BDF8; /* Sky Blue Accent */
   --brand-accent: #64748B; /* Slate Gray */
 
-  /* Dark Theme Default - Corporate Navy */
-  --background-base: #0F172A;
-  --background-surface: #1E293B;
-  --background-elevated: #334155;
+  /* Dark Theme Default - Aura Navy */
+  --background-base: #1A233A;
+  --background-surface: #202B45;
+  --background-elevated: #2A3655;
   
-  --text-primary: #F8FAFC;
+  --text-primary: #FFFFFF;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
   
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glass-bg: rgba(18, 18, 18, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(32, 43, 69, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-  --gradient-glow: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), transparent 70%);
+  --gradient-primary: linear-gradient(135deg, #55C1D9, #4A7AFF);
+  --gradient-glow: radial-gradient(circle at center, rgba(85, 193, 217, 0.15), transparent 70%);
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -35,7 +35,8 @@
   /* Border Radius */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
-  --radius-lg: 1.5rem;
+  --radius-lg: 1.5rem; /* 24px */
+  --radius-xl: 2rem; /* 32px */
   --radius-full: 9999px;
 
   /* Transitions */
@@ -78,6 +79,9 @@ body {
   flex-direction: column;
   color: var(--text-primary);
   background-color: var(--background-base);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px);
+  background-size: 50px 50px;
+  background-position: 0 0;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
