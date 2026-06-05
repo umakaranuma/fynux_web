@@ -23,38 +23,6 @@ const qualityStandards = [
   }
 ];
 
-const ecosystem = [
-  { 
-    category: "Mobile Frameworks", 
-    description: "Cross-platform and native integrations tailored for high performance.",
-    tech: ["Flutter", "Dart", "iOS SDK", "Android SDK"],
-    icon: <Smartphone size={24} />
-  },
-  { 
-    category: "Native Operating Core", 
-    description: "Low-level system access and complex hardware integrations.",
-    tech: ["Kotlin", "Swift"],
-    icon: <Terminal size={24} />
-  },
-  { 
-    category: "Web & API Backends", 
-    description: "Scalable API architectures and interactive frontends.",
-    tech: ["NestJS", "Django REST Framework", "React"],
-    icon: <Server size={24} />
-  },
-  { 
-    category: "Data Systems", 
-    description: "Robust data persistence and real-time synchronization.",
-    tech: ["PostgreSQL", "MySQL", "Hive Databases", "SQLite", "Drift", "SharedPreferences"],
-    icon: <Database size={24} />
-  },
-  { 
-    category: "DevOps & Quality Assurance", 
-    description: "Automated pipelines and test-driven deployment systems.",
-    tech: ["GitHub Actions", "Automated CI-CD Pipelines", "Fastlane", "App Store & Play Store Delivery"],
-    icon: <Cog size={24} />
-  }
-];
 
 export default function AboutSection() {
   return (
@@ -127,50 +95,6 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Technical Ecosystem */}
-        <div className={styles.ecosystemWrap}>
-          <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={styles.sectionTitleCenter}
-          >
-            Our Technical Ecosystem
-          </motion.h3>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className={styles.sectionSubtitleCenter}
-          >
-            We carefully select elite modern technologies to build robust, future-proof software.
-          </motion.p>
-          
-          <div className={styles.ecosystemGrid}>
-            {ecosystem.map((eco, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.4 }}
-                className={styles.ecoCard}
-              >
-                <div className={styles.ecoHeader}>
-                  <div className={styles.ecoIcon}>{eco.icon}</div>
-                  <h4 className={styles.ecoCategoryTitle}>{eco.category}</h4>
-                </div>
-                <p className={styles.ecoDescription}>{eco.description}</p>
-                <div className={styles.ecoTechTags}>
-                  {eco.tech.map((t, i) => (
-                    <span key={i} className={styles.ecoTag}>{t}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
         {/* Call to action */}
         <motion.div 
